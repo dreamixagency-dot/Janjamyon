@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JanJa Myon - Жантай Гоймон</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Noto+Sans+Mongolian&display=swap');
+        
+        :root {
+            --brand-red: #cc0000;
+            --brand-yellow: #ffcc00;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        /* Hero section-ий арын зураг */
+        .hero-gradient {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://lh3.googleusercontent.com/d/15KgIKNUXbj09a6p0jpuRXt2zlbBfgUYN');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .menu-card {
+            transition: all 0.3s ease;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .promo-badge {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .img-container {
+            height: 250px;
+            overflow: hidden;
+            background-color: #f3f4f6;
+        }
+
+        .img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .menu-card:hover .img-container img {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Навигаци -->
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-sm">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <span class="text-2xl font-bold text-red-600">JanJa</span>
+                <span class="text-2xl font-bold text-gray-800">Myon</span>
+            </div>
+            <a href="tel:90908772" class="bg-red-600 text-white px-4 py-2 rounded-full font-bold flex items-center space-x-2 hover:bg-red-700 transition shadow-md">
+                <i class="fas fa-phone"></i>
+                <span>9090-8772</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-gradient min-h-screen flex items-center justify-center text-center text-white pt-16">
+        <div class="px-4">
+            <h2 class="text-yellow-400 font-bold tracking-widest uppercase mb-2">K-Drama дээрх яг л тэр амт!</h2>
+            <h1 class="text-6xl md:text-8xl font-bold mb-6 italic">ЖАНТАЙ ГОЙМОН</h1>
+            <p class="text-lg md:text-2xl mb-10 max-w-3xl mx-auto font-medium">Салахын аргагүй амтат жантай гоймон болон халуун ногоотой шөлтэй гоймонгуудыг манайхаас ирж амтлаарай.</p>
+            <div class="flex flex-col md:flex-row gap-4 justify-center">
+                <a href="#menu" class="bg-yellow-500 text-black px-10 py-5 rounded-xl font-bold text-xl hover:bg-yellow-400 transition shadow-2xl">Цэс үзэх</a>
+                <a href="https://www.facebook.com/profile.php?id=61577466385393" target="_blank" class="bg-blue-600 text-white px-10 py-5 rounded-xl font-bold text-xl hover:bg-blue-500 transition flex items-center justify-center gap-2 shadow-2xl">
+                    <i class="fab fa-facebook"></i> Facebook
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Мэдээлэл -->
+    <section class="py-12 bg-white border-b">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="p-4">
+                    <div class="bg-red-50 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 border border-red-100">
+                        <i class="fas fa-clock text-2xl text-red-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Цагийн хуваарь</h3>
+                    <p class="text-gray-600 font-medium">Өдөр бүр: 10:00 - 20:00</p>
+                </div>
+                <div class="p-4">
+                    <div class="bg-red-50 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 border border-red-100">
+                        <i class="fas fa-map-marker-alt text-2xl text-red-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Байршил</h3>
+                    <p class="text-gray-600 font-medium">100 айлын урд буудал,<br>BSB замын эсрэг талд</p>
+                </div>
+                <div class="p-4">
+                    <div class="bg-red-50 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 border border-red-100">
+                        <i class="fas fa-truck text-2xl text-red-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Хүргэлт</h3>
+                    <p class="text-gray-600 font-bold">100 айл & 11-р хороолол: ҮНЭГҮЙ</p>
+                    <p class="text-gray-500 text-sm">Бусад бүсэд: 3,000₮ - 5,000₮</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Цэс -->
+    <section id="menu" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Амтат Цэс</h2>
+                <div class="w-24 h-1 bg-red-600 mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Жантай Гоймон -->
+                <div class="menu-card bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl">
+                    <div class="img-container">
+                        <img src="https://lh3.googleusercontent.com/d/12mmrZ4hkqtU9A6kzVdfQ9-vqnvKRnm0n" alt="" onerror="this.src='https://via.placeholder.com/400x300?text=Janjamyon'">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-xl font-bold">Жантай Гоймон</h3>
+                            <span class="text-red-600 font-bold text-lg">15,000₮</span>
+                        </div>
+                        <p class="text-gray-600 text-sm italic">Уламжлалт хар буурцгийн сүмстэй амтат гоймон.</p>
+                    </div>
+                </div>
+
+                <!-- Жампун -->
+                <div class="menu-card bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl">
+                    <div class="img-container">
+                        <img src="https://lh3.googleusercontent.com/d/1z5nB22nM5DrRNpV7kxCqNtkchAtCUTvl" alt="" onerror="this.src='https://via.placeholder.com/400x300?text=Jampong'">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-xl font-bold">Жампун</h3>
+                            <span class="text-red-600 font-bold text-lg">18,000₮</span>
+                        </div>
+                        <p class="text-gray-600 text-sm italic">Халуун ногоотой, далайн гаралтай бүтээгдэхүүнтэй шөл.</p>
+                    </div>
+                </div>
+
+                <!-- Бугжажан (Шинэчилсэн зураг) -->
+                <div class="menu-card bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl">
+                    <div class="img-container">
+                        <img src="https://lh3.googleusercontent.com/d/1IRh-dC533BVmRrb5BPgXhfaBfkXFZIbT" alt="" onerror="this.src='https://via.placeholder.com/400x300?text=Bugjajang'">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-xl font-bold">Бугжажан</h3>
+                            <span class="text-red-600 font-bold text-lg">19,800₮</span>
+                        </div>
+                        <p class="text-gray-600 text-sm italic">Тусгай жороор бэлтгэсэн амтат Жантай гоймонгийн сет.</p>
+                    </div>
+                </div>
+
+                <!-- Бугжамён (Шинэчилсэн зураг) -->
+                <div class="menu-card bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl">
+                    <div class="img-container">
+                        <img src="https://lh3.googleusercontent.com/d/1OJCO817jK95p_zcrcPod3RobL4jUHbY-" alt="" onerror="this.src='https://via.placeholder.com/400x300?text=Bugjamyon'">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-xl font-bold">Бугжамён</h3>
+                            <span class="text-red-600 font-bold text-lg">19,800₮</span>
+                        </div>
+                        <p class="text-gray-600 text-sm italic">Амтат хачир болон гоймонгийн хослол.</p>
+                    </div>
+                </div>
+
+                <!-- Бугымбаб -->
+                <div class="menu-card bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl">
+                    <div class="img-container">
+                        <img src="https://lh3.googleusercontent.com/d/1Tjse4It6GgDzYPNC97rZ0YMWQiG8r3cl" alt="" onerror="this.src='https://via.placeholder.com/400x300?text=Bugymbap'">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-xl font-bold">Бугымбаб</h3>
+                            <span class="text-red-600 font-bold text-lg">17,000₮</span>
+                        </div>
+                        <p class="text-gray-600 text-sm italic">Жантай, өндөгтэй хуурсан будаа.</p>
+                    </div>
+                </div>
+
+                <!-- Амтат Бууз -->
+                <div class="menu-card bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl">
+                    <div class="img-container">
+                        <img src="https://lh3.googleusercontent.com/d/1IwZ90chVrklFTmtD3QhdaG35uMC5eSKH" alt="" onerror="this.src='https://via.placeholder.com/400x300?text=Buuz'">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-xl font-bold">Амтат Бууз (10ш)</h3>
+                            <span class="text-red-600 font-bold text-lg">18,000₮</span>
+                        </div>
+                        <p class="text-gray-600 text-sm italic">Хоний мах, сонгинотой амтат уурын бууз.</p>
+                    </div>
+                </div>
+
+                 <!-- Жамжамён -->
+                 <div class="menu-card bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl">
+                    <div class="img-container">
+                        <img src="https://lh3.googleusercontent.com/d/1f3RcMLC5XsvLHo7nwPu4I09wEjJJS02h" alt="" onerror="this.src='https://via.placeholder.com/400x300?text=Jamjamyon'">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-xl font-bold">Жамжамён</h3>
+                            <span class="text-red-600 font-bold text-lg">19,800₮</span>
+                        </div>
+                        <p class="text-gray-600 text-sm italic">Хоёр амтыг нэг дор! Жантай болон Жампун гоймонгийн хослол.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Урамшуулал -->
+    <section class="py-16 bg-red-600 text-white overflow-hidden">
+        <div class="container mx-auto px-4 relative">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-12">
+                <div class="md:w-1/2">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6 promo-badge">9 + 1 УРАМШУУЛАЛ!</h2>
+                    <p class="text-xl mb-8">Та 9 удаа худалдан авалт хийгээд 10 дахь гоймонгоо ҮНЭГҮЙ аваарай. Манай байнгын үйлчлүүлэгч болоорой!</p>
+                    <div class="inline-block bg-yellow-400 text-black px-6 py-3 rounded-full font-bold shadow-lg uppercase tracking-wider">Урамшуулал үргэлжилж байна</div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="bg-white p-6 rounded-3xl shadow-2xl transform rotate-3 hover:rotate-0 transition duration-500">
+                         <div class="w-64 h-64 bg-white flex items-center justify-center">
+                             <img src="https://lh3.googleusercontent.com/d/1MyRk5a3TFbi92R8oT9XMRuPnZfnd-o1d" alt="" class="w-full h-full object-contain" onerror="this.src='https://via.placeholder.com/200?text=QR+Code'">
+                         </div>
+                         <p class="text-gray-800 text-center font-bold mt-4 text-lg">Scan & Order Now</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Хөл хэсэг -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+                <div>
+                    <h3 class="text-2xl font-bold mb-6 text-red-500">JanJa Myon</h3>
+                    <p class="text-gray-400 leading-relaxed italic">"K-Drama дээрх яг л тэр амтыг манайхаас..."</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Холбоо барих</h3>
+                    <ul class="space-y-4 text-gray-400">
+                        <li class="flex items-center space-x-3">
+                            <i class="fas fa-phone text-red-500"></i>
+                            <a href="tel:90908772" class="hover:text-white transition">9090 8772</a>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <i class="fas fa-map-marker-alt text-red-500 mt-1"></i>
+                            <span>100 айлын урд буудал,<br>BSB замын эсрэг талд</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fab fa-facebook text-blue-500 text-xl"></i>
+                            <a href="https://www.facebook.com/profile.php?id=61577466385393" target="_blank" class="hover:text-white transition">JanJa Myon Facebook</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Ажиллах цаг</h3>
+                    <p class="text-gray-400 font-medium">Даваа - Ням: 10:00 - 20:00</p>
+                    <div class="mt-6 flex space-x-4">
+                        <div class="bg-gray-800 p-3 rounded-lg"><i class="fas fa-utensils"></i></div>
+                        <div class="bg-gray-800 p-3 rounded-lg"><i class="fas fa-motorcycle"></i></div>
+                        <div class="bg-gray-800 p-3 rounded-lg text-red-500"><i class="fas fa-heart"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-500 text-sm">
+                <p>&copy; 2024 JanJa Myon. Бүх эрх хуулиар хамгаалагдсан.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Утасны товчлуур -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <a href="tel:90908772" class="bg-green-500 text-white w-16 h-16 rounded-full shadow-2xl flex items-center justify-center text-2xl animate-bounce hover:bg-green-600 transition border-4 border-white">
+            <i class="fas fa-phone"></i>
+        </a>
+    </div>
+
+</body>
+</html>
