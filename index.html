@@ -19,6 +19,7 @@
             scroll-behavior: smooth;
         }
 
+        /* Hero section-ий арын зураг */
         .hero-gradient {
             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://lh3.googleusercontent.com/d/15KgIKNUXbj09a6p0jpuRXt2zlbBfgUYN');
             background-size: cover;
@@ -31,6 +32,16 @@
 
         .menu-card:hover {
             transform: translateY(-8px);
+        }
+
+        .promo-badge {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
 
         .img-container {
@@ -49,28 +60,6 @@
         .menu-card:hover .img-container img {
             transform: scale(1.1);
         }
-
-        .cart-modal {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.5);
-            z-index: 100;
-            backdrop-filter: blur(4px);
-        }
-
-        .active-modal {
-            display: flex;
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .animate-fade-in-up {
-            animation: fadeInUp 0.4s ease-out;
-        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
@@ -82,16 +71,10 @@
                 <span class="text-2xl font-bold text-red-600">JanJa</span>
                 <span class="text-2xl font-bold text-gray-800">Myon</span>
             </div>
-            <div class="flex items-center space-x-4">
-                <a href="tel:90908772" class="hidden md:flex bg-gray-100 text-gray-800 px-4 py-2 rounded-full font-bold items-center space-x-2">
-                    <i class="fas fa-phone"></i>
-                    <span>9090-8772</span>
-                </a>
-                <button onclick="toggleCart()" class="relative bg-red-600 text-white p-3 rounded-full hover:bg-red-700 transition shadow-lg">
-                    <i class="fas fa-shopping-basket text-xl"></i>
-                    <span id="cart-count" class="absolute -top-1 -right-1 bg-yellow-400 text-black text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full border-2 border-white">0</span>
-                </button>
-            </div>
+            <a href="tel:90908772" class="bg-red-600 text-white px-4 py-2 rounded-full font-bold flex items-center space-x-2 hover:bg-red-700 transition shadow-md">
+                <i class="fas fa-phone"></i>
+                <span>9090-8772</span>
+            </a>
         </div>
     </nav>
 
@@ -103,8 +86,8 @@
             <p class="text-lg md:text-2xl mb-10 max-w-3xl mx-auto font-medium">Солонгос үндэсний амтат жантай гоймон болон халуун ногоотой шөлтэй гоймонгуудыг манайхаас ирж амтлаарай.</p>
             <div class="flex flex-col md:flex-row gap-4 justify-center">
                 <a href="#menu" class="bg-yellow-500 text-black px-10 py-5 rounded-xl font-bold text-xl hover:bg-yellow-400 transition shadow-2xl">Цэс үзэх</a>
-                <a href="https://www.facebook.com/janjamyon/" target="_blank" class="bg-blue-600 text-white px-10 py-5 rounded-xl font-bold text-xl hover:bg-blue-500 transition flex items-center justify-center gap-2 shadow-2xl">
-                    <i class="fab fa-facebook"></i> Facebook Хуудас
+                <a href="https://www.facebook.com/profile.php?id=61577466385393" target="_blank" class="bg-blue-600 text-white px-10 py-5 rounded-xl font-bold text-xl hover:bg-blue-500 transition flex items-center justify-center gap-2 shadow-2xl">
+                    <i class="fab fa-facebook"></i> Facebook
                 </a>
             </div>
         </div>
@@ -142,247 +125,206 @@
 
     <!-- Цэс -->
     <section id="menu" class="py-20 bg-gray-50">
-        <div class="container mx-auto px-4 text-center">
-            <div class="mb-16">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
                 <h2 class="text-4xl font-bold mb-4">Амтат Цэс</h2>
                 <div class="w-24 h-1 bg-red-600 mx-auto rounded-full"></div>
-                <p class="mt-4 text-gray-500">Хоолоо сонгоод "Сагслах" товчийг дарна уу.</p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Honey Garlic Chicken -->
-                <div class="menu-card bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl ring-2 ring-yellow-400/20 text-left">
-                    <div class="img-container">
-                        <img src="https://lh3.googleusercontent.com/d/1qvx0r3VOJf3q_TzJ7UU_VS19JvIYKACW" alt="" onerror="this.src='https://via.placeholder.com/400x300?text=Honey+Garlic'">
+                <div class="menu-card bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl ring-2 ring-yellow-400/20">
+                    <div class="img-container relative">
+                        <img src="https://lh3.googleusercontent.com/d/1qvx0r3VOJf3q_TzJ7UU_VS19JvIYKACW" alt="" onerror="this.src='https://via.placeholder.com/400x300?text=Honey+Garlic+Chicken'">
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-1">Honey Garlic Chicken</h3>
-                        <p class="text-gray-600 text-sm mb-4 italic">Зөгийн бал, сармистай чихэрлэг тахиа</p>
-                        <div class="flex flex-col gap-2">
-                            <button onclick="addToCart('honey-m', 'Honey Garlic (M)', 22000)" class="w-full flex justify-between items-center bg-gray-50 hover:bg-yellow-50 p-3 rounded-xl border border-gray-100 transition">
-                                <span class="text-sm">M: 1 будаа + Төмс</span>
-                                <span class="font-bold text-red-600">22,000₮ +</span>
-                            </button>
-                            <button onclick="addToCart('honey-l', 'Honey Garlic (L)', 38000)" class="w-full flex justify-between items-center bg-gray-50 hover:bg-yellow-50 p-3 rounded-xl border border-gray-100 transition">
-                                <span class="text-sm">L: 2хүн, 2будаа + Төмс</span>
-                                <span class="font-bold text-red-600">38,000₮ +</span>
-                            </button>
+                        <p class="text-gray-600 text-sm mb-3 italic">Зөгийн бал, сармистай чихэрлэг тахиа</p>
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center border-b border-gray-100 pb-2">
+                                <span class="text-sm font-medium text-gray-500">M: 1 будаа, шарсан төмс</span>
+                                <span class="text-red-600 font-bold">22,000₮</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm font-medium text-gray-500">L: 2хүн, 2будаа, шарсан төмс</span>
+                                <span class="text-red-600 font-bold">38,000₮</span>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Бүрж шарсан тахиа -->
-                <div class="menu-card bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl ring-2 ring-yellow-400/20 text-left">
-                    <div class="img-container">
+                <div class="menu-card bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl ring-2 ring-yellow-400/20">
+                    <div class="img-container relative">
                         <img src="https://lh3.googleusercontent.com/d/1m0McF8JwscUYwKCfZrD8q4iyCULV78Ne" alt="" onerror="this.src='https://via.placeholder.com/400x300?text=Fried+Chicken'">
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-1">Бүрж шарсан тахиа</h3>
-                        <p class="text-gray-600 text-sm mb-4 italic">Fried Chicken</p>
-                        <div class="flex flex-col gap-2">
-                            <button onclick="addToCart('fried-m', 'Бүрж шарсан (M)', 20000)" class="w-full flex justify-between items-center bg-gray-50 hover:bg-yellow-50 p-3 rounded-xl border border-gray-100 transition">
-                                <span class="text-sm">M: 1 будаа + Төмс</span>
-                                <span class="font-bold text-red-600">20,000₮ +</span>
-                            </button>
-                            <button onclick="addToCart('fried-l', 'Бүрж шарсан (L)', 36000)" class="w-full flex justify-between items-center bg-gray-50 hover:bg-yellow-50 p-3 rounded-xl border border-gray-100 transition">
-                                <span class="text-sm">L: 2хүн, 2будаа + Төмс</span>
-                                <span class="font-bold text-red-600">36,000₮ +</span>
-                            </button>
+                        <p class="text-gray-600 text-sm mb-3 italic">Fried Chicken</p>
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center border-b border-gray-100 pb-2">
+                                <span class="text-sm font-medium text-gray-500">M: 1 будаа, шарсан төмс</span>
+                                <span class="text-red-600 font-bold">20,000₮</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm font-medium text-gray-500">L: 2хүн, 2будаа, шарсан төмс</span>
+                                <span class="text-red-600 font-bold">36,000₮</span>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Жантай Гоймон -->
-                <div class="menu-card bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl text-left">
+                <div class="menu-card bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl">
                     <div class="img-container">
                         <img src="https://lh3.googleusercontent.com/d/12mmrZ4hkqtU9A6kzVdfQ9-vqnvKRnm0n" alt="" onerror="this.src='https://via.placeholder.com/400x300?text=Janjamyon'">
                     </div>
                     <div class="p-6">
-                        <div class="flex justify-between items-center mb-4">
+                        <div class="flex justify-between items-center mb-2">
                             <h3 class="text-xl font-bold">Жантай Гоймон</h3>
                             <span class="text-red-600 font-bold text-lg">15,000₮</span>
                         </div>
-                        <button onclick="addToCart('janja-myon', 'Жантай Гоймон', 15000)" class="w-full bg-red-600 text-white font-bold py-3 rounded-xl hover:bg-red-700 transition">
-                            <i class="fas fa-plus mr-2"></i> Сагслах
-                        </button>
+                        <p class="text-gray-600 text-sm italic">Уламжлалт хар буурцгийн сүмстэй амтат гоймон.</p>
                     </div>
                 </div>
 
                 <!-- Жампун -->
-                <div class="menu-card bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl text-left">
+                <div class="menu-card bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl">
                     <div class="img-container">
                         <img src="https://lh3.googleusercontent.com/d/1z5nB22nM5DrRNpV7kxCqNtkchAtCUTvl" alt="" onerror="this.src='https://via.placeholder.com/400x300?text=Jampong'">
                     </div>
                     <div class="p-6">
-                        <div class="flex justify-between items-center mb-4">
+                        <div class="flex justify-between items-center mb-2">
                             <h3 class="text-xl font-bold">Жампун</h3>
                             <span class="text-red-600 font-bold text-lg">18,000₮</span>
                         </div>
-                        <button onclick="addToCart('jampong', 'Жампун', 18000)" class="w-full bg-red-600 text-white font-bold py-3 rounded-xl hover:bg-red-700 transition">
-                            <i class="fas fa-plus mr-2"></i> Сагслах
-                        </button>
+                        <p class="text-gray-600 text-sm italic">Халуун ногоотой, далайн гаралтай бүтээгдэхүүнтэй шөл.</p>
                     </div>
                 </div>
 
                 <!-- Бугжажан -->
-                <div class="menu-card bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl text-left">
+                <div class="menu-card bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl">
                     <div class="img-container">
                         <img src="https://lh3.googleusercontent.com/d/1IRh-dC533BVmRrb5BPgXhfaBfkXFZIbT" alt="" onerror="this.src='https://via.placeholder.com/400x300?text=Bugjajang'">
                     </div>
                     <div class="p-6">
-                        <div class="flex justify-between items-center mb-4">
+                        <div class="flex justify-between items-center mb-2">
                             <h3 class="text-xl font-bold">Бугжажан</h3>
                             <span class="text-red-600 font-bold text-lg">19,800₮</span>
                         </div>
-                        <button onclick="addToCart('bugjajang', 'Бугжажан', 19800)" class="w-full bg-red-600 text-white font-bold py-3 rounded-xl hover:bg-red-700 transition">
-                            <i class="fas fa-plus mr-2"></i> Сагслах
-                        </button>
+                        <p class="text-gray-600 text-sm italic">Тусгай жороор бэлтгэсэн амтат Жантай гоймонгийн сет.</p>
                     </div>
                 </div>
 
                 <!-- Бугжамён -->
-                <div class="menu-card bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl text-left">
+                <div class="menu-card bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl">
                     <div class="img-container">
                         <img src="https://lh3.googleusercontent.com/d/1OJCO817jK95p_zcrcPod3RobL4jUHbY-" alt="" onerror="this.src='https://via.placeholder.com/400x300?text=Bugjamyon'">
                     </div>
                     <div class="p-6">
-                        <div class="flex justify-between items-center mb-4">
+                        <div class="flex justify-between items-center mb-2">
                             <h3 class="text-xl font-bold">Бугжамён</h3>
                             <span class="text-red-600 font-bold text-lg">19,800₮</span>
                         </div>
-                        <button onclick="addToCart('bugjamyon', 'Бугжамён', 19800)" class="w-full bg-red-600 text-white font-bold py-3 rounded-xl hover:bg-red-700 transition">
-                            <i class="fas fa-plus mr-2"></i> Сагслах
-                        </button>
+                        <p class="text-gray-600 text-sm italic">Амтат хачир болон гоймонгийн хослол.</p>
                     </div>
                 </div>
 
                 <!-- Бугымбаб -->
-                <div class="menu-card bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl text-left">
+                <div class="menu-card bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl">
                     <div class="img-container">
                         <img src="https://lh3.googleusercontent.com/d/1Tjse4It6GgDzYPNC97rZ0YMWQiG8r3cl" alt="" onerror="this.src='https://via.placeholder.com/400x300?text=Bugymbap'">
                     </div>
                     <div class="p-6">
-                        <div class="flex justify-between items-center mb-4">
+                        <div class="flex justify-between items-center mb-2">
                             <h3 class="text-xl font-bold">Бугымбаб</h3>
                             <span class="text-red-600 font-bold text-lg">17,000₮</span>
                         </div>
-                        <button onclick="addToCart('bugymbap', 'Бугымбаб', 17000)" class="w-full bg-red-600 text-white font-bold py-3 rounded-xl hover:bg-red-700 transition">
-                            <i class="fas fa-plus mr-2"></i> Сагслах
-                        </button>
+                        <p class="text-gray-600 text-sm italic">Жантай, өндөгтэй хуурсан будаа.</p>
                     </div>
                 </div>
 
                 <!-- Амтат Бууз -->
-                <div class="menu-card bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl text-left">
+                <div class="menu-card bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl">
                     <div class="img-container">
                         <img src="https://lh3.googleusercontent.com/d/1IwZ90chVrklFTmtD3QhdaG35uMC5eSKH" alt="" onerror="this.src='https://via.placeholder.com/400x300?text=Buuz'">
                     </div>
                     <div class="p-6">
-                        <div class="flex justify-between items-center mb-4">
+                        <div class="flex justify-between items-center mb-2">
                             <h3 class="text-xl font-bold">Амтат Бууз (10ш)</h3>
                             <span class="text-red-600 font-bold text-lg">18,000₮</span>
                         </div>
-                        <button onclick="addToCart('buuz', 'Амтат Бууз (10ш)', 18000)" class="w-full bg-red-600 text-white font-bold py-3 rounded-xl hover:bg-red-700 transition">
-                            <i class="fas fa-plus mr-2"></i> Сагслах
-                        </button>
+                        <p class="text-gray-600 text-sm italic">Хоний мах, сонгинотой амтат уурын бууз.</p>
                     </div>
                 </div>
 
                  <!-- Жамжамён -->
-                 <div class="menu-card bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl text-left">
+                 <div class="menu-card bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl">
                     <div class="img-container">
                         <img src="https://lh3.googleusercontent.com/d/1f3RcMLC5XsvLHo7nwPu4I09wEjJJS02h" alt="" onerror="this.src='https://via.placeholder.com/400x300?text=Jamjamyon'">
                     </div>
                     <div class="p-6">
-                        <div class="flex justify-between items-center mb-4">
+                        <div class="flex justify-between items-center mb-2">
                             <h3 class="text-xl font-bold">Жамжамён</h3>
                             <span class="text-red-600 font-bold text-lg">19,800₮</span>
                         </div>
-                        <button onclick="addToCart('jamjamyon', 'Жамжамён', 19800)" class="w-full bg-red-600 text-white font-bold py-3 rounded-xl hover:bg-red-700 transition">
-                            <i class="fas fa-plus mr-2"></i> Сагслах
-                        </button>
+                        <p class="text-gray-600 text-sm italic">Хоёр амтыг нэг дор! Жантай болон Жампун гоймонгийн хослол.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Сагсны Модал -->
-    <div id="cart-modal" class="cart-modal flex items-center justify-center px-4">
-        <div class="bg-white w-full max-w-lg rounded-3xl overflow-hidden shadow-2xl animate-fade-in-up">
-            <div class="p-6 bg-gray-50 flex justify-between items-center border-b">
-                <h3 class="text-xl font-bold flex items-center space-x-2 text-red-600">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span>Таны сагс</span>
-                </h3>
-                <button onclick="toggleCart()" class="text-gray-400 hover:text-black">
-                    <i class="fas fa-times text-2xl"></i>
-                </button>
-            </div>
-            
-            <div id="cart-items" class="p-6 max-h-[40vh] overflow-y-auto space-y-4">
-                <!-- Сагсны бараанууд энд харагдана -->
-                <p class="text-center text-gray-500 py-10">Сагс хоосон байна.</p>
-            </div>
-
-            <div id="order-form" class="p-6 border-t bg-gray-50">
-                <div class="flex justify-between items-center mb-4 text-lg font-bold">
-                    <span>Нийт дүн:</span>
-                    <span id="cart-total" class="text-red-600">0₮</span>
+    <!-- Урамшуулал -->
+    <section class="py-16 bg-red-600 text-white overflow-hidden">
+        <div class="container mx-auto px-4 relative">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-12">
+                <div class="md:w-1/2">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6 promo-badge">9 + 1 УРАМШУУЛАЛ!</h2>
+                    <p class="text-xl mb-8">Та 9 удаа худалдан авалт хийгээд 10 дахь гоймонгоо ҮНЭГҮЙ аваарай. Манай байнгын үйлчлүүлэгч болоорой!</p>
+                    <div class="inline-block bg-yellow-400 text-black px-6 py-3 rounded-full font-bold shadow-lg uppercase tracking-wider">Урамшуулал үргэлжилж байна</div>
                 </div>
-                
-                <div id="checkout-fields" class="hidden space-y-3 mb-4">
-                    <input type="text" id="cust-phone" placeholder="Утасны дугаар *" class="w-full p-3 rounded-xl border focus:ring-2 focus:ring-red-500 outline-none">
-                    <textarea id="cust-addr" placeholder="Хүргэлтийн хаяг *" class="w-full p-3 rounded-xl border focus:ring-2 focus:ring-red-500 outline-none" rows="2"></textarea>
-                </div>
-
-                <div class="flex flex-col gap-2">
-                    <button id="fb-order-btn" onclick="checkout('messenger')" class="hidden bg-blue-600 text-white py-4 rounded-xl font-bold flex items-center justify-center space-x-2 hover:bg-blue-700 transition">
-                        <i class="fab fa-facebook-messenger text-xl"></i>
-                        <span>Facebook-ээр захиалах</span>
-                    </button>
-                    <button id="mail-order-btn" onclick="checkout('email')" class="hidden bg-gray-800 text-white py-4 rounded-xl font-bold flex items-center justify-center space-x-2 hover:bg-black transition">
-                        <i class="fas fa-envelope text-xl"></i>
-                        <span>Мэйлээр захиалах</span>
-                    </button>
-                    <button id="start-checkout-btn" onclick="showFields()" class="w-full bg-red-600 text-white py-4 rounded-xl font-bold hover:bg-red-700 transition">
-                        Захиалга баталгаажуулах
-                    </button>
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="bg-white p-6 rounded-3xl shadow-2xl transform rotate-3 hover:rotate-0 transition duration-500">
+                         <div class="w-64 h-64 bg-white flex items-center justify-center">
+                             <img src="https://lh3.googleusercontent.com/d/1MyRk5a3TFbi92R8oT9XMRuPnZfnd-o1d" alt="" class="w-full h-full object-contain" onerror="this.src='https://via.placeholder.com/200?text=QR+Code'">
+                         </div>
+                         <p class="text-gray-800 text-center font-bold mt-4 text-lg">Scan & Order Now</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Footer -->
+    <!-- Хөл хэсэг -->
     <footer class="bg-gray-900 text-white py-16">
-        <div class="container mx-auto px-4 text-center md:text-left">
+        <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
                 <div>
                     <h3 class="text-2xl font-bold mb-6 text-red-500">JanJa Myon</h3>
                     <p class="text-gray-400 leading-relaxed italic">"K-Drama дээрх яг л тэр амтыг манайхаас..."</p>
-                    <div class="mt-6 flex justify-center md:justify-start space-x-4">
-                        <a href="https://www.facebook.com/janjamyon/" target="_blank" class="bg-gray-800 p-4 rounded-full text-blue-500 hover:bg-blue-500 hover:text-white transition">
-                            <i class="fab fa-facebook-f text-xl"></i>
-                        </a>
-                    </div>
                 </div>
                 <div>
                     <h3 class="text-xl font-bold mb-6">Холбоо барих</h3>
                     <ul class="space-y-4 text-gray-400">
-                        <li class="flex items-center justify-center md:justify-start space-x-3">
+                        <li class="flex items-center space-x-3">
                             <i class="fas fa-phone text-red-500"></i>
                             <a href="tel:90908772" class="hover:text-white transition">9090 8772</a>
                         </li>
-                        <li class="flex items-start justify-center md:justify-start space-x-3">
+                        <li class="flex items-start space-x-3">
                             <i class="fas fa-map-marker-alt text-red-500 mt-1"></i>
                             <span>100 айлын урд буудал,<br>BSB замын эсрэг талд</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fab fa-facebook text-blue-500 text-xl"></i>
+                            <a href="https://www.facebook.com/profile.php?id=61577466385393" target="_blank" class="hover:text-white transition">JanJa Myon Facebook</a>
                         </li>
                     </ul>
                 </div>
                 <div>
                     <h3 class="text-xl font-bold mb-6">Ажиллах цаг</h3>
                     <p class="text-gray-400 font-medium">Даваа - Ням: 10:00 - 20:00</p>
-                    <div class="mt-6 flex justify-center md:justify-start space-x-4">
+                    <div class="mt-6 flex space-x-4">
                         <div class="bg-gray-800 p-3 rounded-lg"><i class="fas fa-utensils"></i></div>
                         <div class="bg-gray-800 p-3 rounded-lg"><i class="fas fa-motorcycle"></i></div>
                         <div class="bg-gray-800 p-3 rounded-lg text-red-500"><i class="fas fa-heart"></i></div>
@@ -396,163 +338,11 @@
     </footer>
 
     <!-- Утасны товчлуур -->
-    <div class="fixed bottom-6 right-6 z-50 flex flex-col space-y-3 items-end">
-        <button onclick="toggleCart()" class="bg-red-600 text-white w-14 h-14 rounded-full shadow-2xl flex items-center justify-center text-xl hover:scale-110 transition border-2 border-white">
-            <i class="fas fa-shopping-basket"></i>
-        </button>
-        <a href="tel:90908772" class="bg-green-500 text-white w-14 h-14 rounded-full shadow-2xl flex items-center justify-center text-xl animate-bounce border-2 border-white">
+    <div class="fixed bottom-6 right-6 z-50">
+        <a href="tel:90908772" class="bg-green-500 text-white w-16 h-16 rounded-full shadow-2xl flex items-center justify-center text-2xl animate-bounce hover:bg-green-600 transition border-4 border-white">
             <i class="fas fa-phone"></i>
         </a>
     </div>
-
-    <script>
-        let cart = [];
-
-        function toggleCart() {
-            const modal = document.getElementById('cart-modal');
-            modal.classList.toggle('active-modal');
-            renderCart();
-        }
-
-        function addToCart(id, name, price) {
-            const existing = cart.find(item => item.id === id);
-            if (existing) {
-                existing.qty++;
-            } else {
-                cart.push({ id, name, price, qty: 1 });
-            }
-            updateCount();
-            
-            // Сагслах товчны эффект
-            const btn = event.currentTarget;
-            const originalText = btn.innerHTML;
-            btn.innerHTML = "<i class='fas fa-check'></i> Нэмэгдлээ";
-            btn.classList.add('bg-green-600', 'text-white');
-            setTimeout(() => { 
-                btn.innerHTML = originalText;
-                btn.classList.remove('bg-green-600', 'text-white');
-            }, 1000);
-        }
-
-        function updateCount() {
-            const count = cart.reduce((acc, item) => acc + item.qty, 0);
-            document.getElementById('cart-count').innerText = count;
-        }
-
-        function removeItem(id) {
-            cart = cart.filter(item => item.id !== id);
-            renderCart();
-            updateCount();
-        }
-
-        function changeQty(id, delta) {
-            const item = cart.find(i => i.id === id);
-            if (item) {
-                item.qty += delta;
-                if (item.qty <= 0) removeItem(id);
-                else renderCart();
-            }
-            updateCount();
-        }
-
-        function renderCart() {
-            const container = document.getElementById('cart-items');
-            const totalEl = document.getElementById('cart-total');
-            const startBtn = document.getElementById('start-checkout-btn');
-            
-            if (cart.length === 0) {
-                container.innerHTML = '<p class="text-center text-gray-500 py-10 font-medium">Сагс хоосон байна.</p>';
-                totalEl.innerText = "0₮";
-                startBtn.style.display = 'none';
-                document.getElementById('checkout-fields').classList.add('hidden');
-                document.getElementById('fb-order-btn').classList.add('hidden');
-                document.getElementById('mail-order-btn').classList.add('hidden');
-                return;
-            }
-
-            startBtn.style.display = 'block';
-            let html = '';
-            let total = 0;
-
-            cart.forEach(item => {
-                const subtotal = item.price * item.qty;
-                total += subtotal;
-                html += `
-                    <div class="flex justify-between items-center bg-gray-50 p-4 rounded-2xl border border-gray-100">
-                        <div class="flex-1">
-                            <h4 class="font-bold text-gray-800">${item.name}</h4>
-                            <p class="text-sm text-red-600 font-semibold">${item.price.toLocaleString()}₮</p>
-                        </div>
-                        <div class="flex items-center space-x-3">
-                            <div class="flex items-center border rounded-xl bg-white shadow-sm overflow-hidden">
-                                <button onclick="changeQty('${item.id}', -1)" class="px-3 py-1 text-red-600 hover:bg-red-50 transition">-</button>
-                                <span class="px-3 font-bold text-gray-700">${item.qty}</span>
-                                <button onclick="changeQty('${item.id}', 1)" class="px-3 py-1 text-red-600 hover:bg-red-50 transition">+</button>
-                            </div>
-                            <button onclick="removeItem('${item.id}')" class="text-gray-400 hover:text-red-600 transition p-2">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </div>
-                    </div>
-                `;
-            });
-
-            container.innerHTML = html;
-            totalEl.innerText = total.toLocaleString() + "₮";
-        }
-
-        function showFields() {
-            document.getElementById('checkout-fields').classList.remove('hidden');
-            document.getElementById('fb-order-btn').classList.remove('hidden');
-            document.getElementById('mail-order-btn').classList.remove('hidden');
-            document.getElementById('start-checkout-btn').classList.add('hidden');
-        }
-
-        function checkout(method) {
-            const phone = document.getElementById('cust-phone').value.trim();
-            const addr = document.getElementById('cust-addr').value.trim();
-
-            if (!phone || !addr) {
-                alert("Утасны дугаар болон хүргэлтийн хаягаа оруулна уу.");
-                return;
-            }
-
-            let orderText = `*ШИНЭ ЗАХИАЛГА - JANJA MYON*\n\n`;
-            let total = 0;
-            cart.forEach(item => {
-                orderText += `• ${item.name} x${item.qty} - ${(item.price * item.qty).toLocaleString()}₮\n`;
-                total += item.price * item.qty;
-            });
-            orderText += `\n*НИЙТ ДҮН: ${total.toLocaleString()}₮*\n\n`;
-            orderText += `*Холбоо барих:* ${phone}\n`;
-            orderText += `*Хаяг:* ${addr}`;
-
-            const encodedMsg = encodeURIComponent(orderText);
-
-            if (method === 'messenger') {
-                // janjamyon Facebook Page-ийн Messenger холбоос
-                window.open(`https://m.me/janjamyon?text=${encodedMsg}`, '_blank');
-            } else if (method === 'email') {
-                const subject = encodeURIComponent("Шинэ захиалга - JanJa Myon");
-                window.location.href = `mailto:janjamyon@gmail.com?subject=${subject}&body=${encodedMsg}`;
-            }
-
-            // Захиалга илгээсний дараах процесс
-            setTimeout(() => {
-                if (confirm("Захиалгын мэдээлэл бэлэн боллоо. Та чат руу ороод ИЛГЭЭХ товчийг дарж баталгаажуулна уу. Сагсыг цэвэрлэх үү?")) {
-                    cart = [];
-                    updateCount();
-                    toggleCart();
-                    // Fields reset
-                    document.getElementById('cust-phone').value = '';
-                    document.getElementById('cust-addr').value = '';
-                    document.getElementById('checkout-fields').classList.add('hidden');
-                    document.getElementById('fb-order-btn').classList.add('hidden');
-                    document.getElementById('mail-order-btn').classList.add('hidden');
-                }
-            }, 500);
-        }
-    </script>
 
 </body>
 </html>
