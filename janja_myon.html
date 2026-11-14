@@ -21,9 +21,19 @@
 
         /* Hero section-ий арын зураг */
         .hero-gradient {
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://lh3.googleusercontent.com/d/15KgIKNUXbj09a6p0jpuRXt2zlbBfgUYN');
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/hero-banner.jpg');
             background-size: cover;
-            background-position: center;
+            /* Утсан дээр: зургийн баруун тал (баруун талын дүр) харагдана */
+            background-position: 85% center;
+            min-height: 100vh;
+        }
+
+        /* Компьютер дээр: зураг бүтнээрээ харагдана */
+        @media (min-width: 768px) {
+            .hero-gradient {
+                background-position: center;
+                min-height: max(calc(100vw * 1054 / 2400), 560px);
+            }
         }
 
         .menu-card {
@@ -79,7 +89,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <header class="hero-gradient min-h-screen flex items-center justify-center text-center text-white pt-16">
+    <header class="hero-gradient flex items-center justify-center text-center text-white pt-16">
         <div class="px-4">
             <h2 class="text-yellow-400 font-bold tracking-widest uppercase mb-2">K-Drama дээрх яг л тэр амт!</h2>
             <h1 class="text-6xl md:text-8xl font-bold mb-6 italic">ЖАНТАЙ ГОЙМОН</h1>
@@ -135,12 +145,12 @@
                 <!-- 1. Жантай Гоймон -->
                 <div class="menu-card bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl ring-2 ring-red-600/20">
                     <div class="img-container">
-                        <img src="https://lh3.googleusercontent.com/d/12mmrZ4hkqtU9A6kzVdfQ9-vqnvKRnm0n" alt="Жантай Гоймон" onerror="this.src='https://via.placeholder.com/400x300?text=Janjamyon'">
+                        <img loading="lazy" src="images/01-jantai-goimon.jpg" alt="Жантай Гоймон">
                     </div>
                     <div class="p-6">
                         <div class="flex justify-between items-center mb-2">
                             <h3 class="text-xl font-bold text-red-600">1. Жантай Гоймон</h3>
-                            <span class="text-red-600 font-bold text-lg">17,000₮</span>
+                            <span class="text-red-600 font-bold text-lg">19,000₮</span>
                         </div>
                         <p class="text-gray-600 text-sm italic">Уламжлалт хар буурцгийн сүмстэй амтат гоймон.</p>
                     </div>
@@ -149,12 +159,12 @@
                 <!-- 2. Бугымбаб -->
                 <div class="menu-card bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl">
                     <div class="img-container">
-                        <img src="https://lh3.googleusercontent.com/d/1Tjse4It6GgDzYPNC97rZ0YMWQiG8r3cl" alt="Бугымбаб" onerror="this.src='https://via.placeholder.com/400x300?text=Bugymbap'">
+                        <img loading="lazy" src="images/02-bugymbap.jpg" alt="Бугымбаб">
                     </div>
                     <div class="p-6">
                         <div class="flex justify-between items-center mb-2">
                             <h3 class="text-xl font-bold">2. Бугымбаб</h3>
-                            <span class="text-red-600 font-bold text-lg">19,000₮</span>
+                            <span class="text-red-600 font-bold text-lg">21,000₮</span>
                         </div>
                         <p class="text-gray-600 text-sm italic">Жантай, өндөгтэй хуурсан будаа.</p>
                     </div>
@@ -163,12 +173,12 @@
                 <!-- 3. Бугжажан -->
                 <div class="menu-card bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl">
                     <div class="img-container">
-                        <img src="https://lh3.googleusercontent.com/d/1IRh-dC533BVmRrb5BPgXhfaBfkXFZIbT" alt="Бугжажан" onerror="this.src='https://via.placeholder.com/400x300?text=Bugjajang'">
+                        <img loading="lazy" src="images/03-bugjajang.jpg" alt="Бугжажан">
                     </div>
                     <div class="p-6">
                         <div class="flex justify-between items-center mb-2">
                             <h3 class="text-xl font-bold">3. Бугжажан</h3>
-                            <span class="text-red-600 font-bold text-lg">21,800₮</span>
+                            <span class="text-red-600 font-bold text-lg">23,800₮</span>
                         </div>
                         <p class="text-gray-600 text-sm italic">Тусгай жороор бэлтгэсэн амтат Жантай гоймонгийн сет.</p>
                     </div>
@@ -177,11 +187,32 @@
                 <!-- 4. Honey Garlic Chicken -->
                 <div class="menu-card bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl">
                     <div class="img-container relative">
-                        <img src="https://lh3.googleusercontent.com/d/1qvx0r3VOJf3q_TzJ7UU_VS19JvIYKACW" alt="Honey Garlic Chicken" onerror="this.src='https://via.placeholder.com/400x300?text=Honey+Garlic+Chicken'">
+                        <img loading="lazy" src="images/04-honey-garlic-chicken.jpg" alt="Honey Garlic Chicken">
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-1">4. Honey Garlic Chicken</h3>
                         <p class="text-gray-600 text-sm mb-3 italic">Зөгийн бал, сармистай чихэрлэг тахиа</p>
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center border-b border-gray-100 pb-2">
+                                <span class="text-sm font-medium text-gray-500">M: 1 будаа, шарсан төмс</span>
+                                <span class="text-red-600 font-bold">26,000₮</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm font-medium text-gray-500">L: 2хүн, 2будаа, шарсан төмс</span>
+                                <span class="text-red-600 font-bold">42,000₮</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. Бүрж шарсан тахиа -->
+                <div class="menu-card bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl">
+                    <div class="img-container relative">
+                        <img loading="lazy" src="images/05-fried-chicken.jpg" alt="Fried Chicken">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-1">5. Бүрж шарсан тахиа</h3>
+                        <p class="text-gray-600 text-sm mb-3 italic">Fried Chicken</p>
                         <div class="space-y-3">
                             <div class="flex justify-between items-center border-b border-gray-100 pb-2">
                                 <span class="text-sm font-medium text-gray-500">M: 1 будаа, шарсан төмс</span>
@@ -195,36 +226,15 @@
                     </div>
                 </div>
 
-                <!-- 5. Бүрж шарсан тахиа -->
-                <div class="menu-card bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl">
-                    <div class="img-container relative">
-                        <img src="https://lh3.googleusercontent.com/d/1m0McF8JwscUYwKCfZrD8q4iyCULV78Ne" alt="Fried Chicken" onerror="this.src='https://via.placeholder.com/400x300?text=Fried+Chicken'">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-1">5. Бүрж шарсан тахиа</h3>
-                        <p class="text-gray-600 text-sm mb-3 italic">Fried Chicken</p>
-                        <div class="space-y-3">
-                            <div class="flex justify-between items-center border-b border-gray-100 pb-2">
-                                <span class="text-sm font-medium text-gray-500">M: 1 будаа, шарсан төмс</span>
-                                <span class="text-red-600 font-bold">22,000₮</span>
-                            </div>
-                            <div class="flex justify-between items-center">
-                                <span class="text-sm font-medium text-gray-500">L: 2хүн, 2будаа, шарсан төмс</span>
-                                <span class="text-red-600 font-bold">38,000₮</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
                 <!-- 6. Амтат Бууз -->
                 <div class="menu-card bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl">
                     <div class="img-container">
-                        <img src="https://lh3.googleusercontent.com/d/1IwZ90chVrklFTmtD3QhdaG35uMC5eSKH" alt="Амтат Бууз" onerror="this.src='https://via.placeholder.com/400x300?text=Buuz'">
+                        <img loading="lazy" src="images/06-amtat-buuz.jpg" alt="Амтат Бууз">
                     </div>
                     <div class="p-6">
                         <div class="flex justify-between items-center mb-2">
                             <h3 class="text-xl font-bold">6. Амтат Бууз (10ш)</h3>
-                            <span class="text-red-600 font-bold text-lg">20,000₮</span>
+                            <span class="text-red-600 font-bold text-lg">22,000₮</span>
                         </div>
                         <p class="text-gray-600 text-sm italic">Хоний мах, сонгинотой амтат уурын бууз.</p>
                     </div>
@@ -233,12 +243,12 @@
                 <!-- 7. Бугжамён -->
                 <div class="menu-card bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl">
                     <div class="img-container">
-                        <img src="https://lh3.googleusercontent.com/d/1OJCO817jK95p_zcrcPod3RobL4jUHbY-" alt="Бугжамён" onerror="this.src='https://via.placeholder.com/400x300?text=Bugjamyon'">
+                        <img loading="lazy" src="images/07-bugjamyon.jpg" alt="Бугжамён">
                     </div>
                     <div class="p-6">
                         <div class="flex justify-between items-center mb-2">
                             <h3 class="text-xl font-bold">7. Бугжамён</h3>
-                            <span class="text-red-600 font-bold text-lg">21,800₮</span>
+                            <span class="text-red-600 font-bold text-lg">23,800₮</span>
                         </div>
                         <p class="text-gray-600 text-sm italic">Амтат хачир болон гоймонгийн хослол.</p>
                     </div>
@@ -247,12 +257,12 @@
                 <!-- 8. Жампун -->
                 <div class="menu-card bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl">
                     <div class="img-container">
-                        <img src="https://lh3.googleusercontent.com/d/1z5nB22nM5DrRNpV7kxCqNtkchAtCUTvl" alt="Жампун" onerror="this.src='https://via.placeholder.com/400x300?text=Jampong'">
+                        <img loading="lazy" src="images/08-jampong.jpg" alt="Жампун">
                     </div>
                     <div class="p-6">
                         <div class="flex justify-between items-center mb-2">
                             <h3 class="text-xl font-bold">8. Жампун</h3>
-                            <span class="text-red-600 font-bold text-lg">20,000₮</span>
+                            <span class="text-red-600 font-bold text-lg">22,000₮</span>
                         </div>
                         <p class="text-gray-600 text-sm italic">Халуун ногоотой, далайн гаралтай бүтээгдэхүүнтэй шөл.</p>
                     </div>
@@ -261,12 +271,12 @@
                  <!-- 9. Жамжамён -->
                  <div class="menu-card bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl">
                     <div class="img-container">
-                        <img src="https://lh3.googleusercontent.com/d/1f3RcMLC5XsvLHo7nwPu4I09wEjJJS02h" alt="Жамжамён" onerror="this.src='https://via.placeholder.com/400x300?text=Jamjamyon'">
+                        <img loading="lazy" src="images/09-jamjamyon.jpg" alt="Жамжамён">
                     </div>
                     <div class="p-6">
                         <div class="flex justify-between items-center mb-2">
                             <h3 class="text-xl font-bold">9. Жамжамён</h3>
-                            <span class="text-red-600 font-bold text-lg">21,800₮</span>
+                            <span class="text-red-600 font-bold text-lg">23,800₮</span>
                         </div>
                         <p class="text-gray-600 text-sm italic">Хоёр амтыг нэг дор! Жантай болон Жампун гоймонгийн хослол.</p>
                     </div>
@@ -275,12 +285,12 @@
                 <!-- 10. Танжампун сэт -->
                 <div class="menu-card bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl">
                     <div class="img-container">
-                        <img src="Gemini_Generated_Image_uftn38uftn38uftn.png" alt="Танжампун сэт" onerror="this.src='https://via.placeholder.com/400x300?text=Tanjampong+Set'">
+                        <img loading="lazy" src="images/10-tanjampong-set.jpg" alt="Танжампун сэт">
                     </div>
                     <div class="p-6">
                         <div class="flex justify-between items-center mb-2">
                             <h3 class="text-xl font-bold">10. Танжампун сэт</h3>
-                            <span class="text-red-600 font-bold text-lg">59,000₮</span>
+                            <span class="text-red-600 font-bold text-lg">61,000₮</span>
                         </div>
                         <p class="text-gray-600 text-sm italic">Тансуюуг, Жанпун, Жантай гоймон * 3-4 хүний сэт</p>
                     </div>
@@ -289,7 +299,7 @@
                 <!-- 11. Тансуюуг -->
                 <div class="menu-card bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl">
                     <div class="img-container">
-                        <img src="Gemini_Generated_Image_ij4bu6ij4bu6ij4b.png" alt="Тансуюуг" onerror="this.src='https://via.placeholder.com/400x300?text=Tansuyuk'">
+                        <img loading="lazy" src="images/11-tansuyuk.jpg" alt="Тансуюуг">
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-1">11. Тансуюуг</h3>
@@ -297,11 +307,11 @@
                         <div class="space-y-3">
                             <div class="flex justify-between items-center border-b border-gray-100 pb-2">
                                 <span class="text-sm font-medium text-gray-500">M: нэг хүний порц</span>
-                                <span class="text-red-600 font-bold">24,000₮</span>
+                                <span class="text-red-600 font-bold">26,000₮</span>
                             </div>
                             <div class="flex justify-between items-center">
                                 <span class="text-sm font-medium text-gray-500">L: хоёр хүний порц</span>
-                                <span class="text-red-600 font-bold">46,000₮</span>
+                                <span class="text-red-600 font-bold">48,000₮</span>
                             </div>
                         </div>
                     </div>
@@ -310,12 +320,12 @@
                 <!-- 12. Хончи жажан -->
                 <div class="menu-card bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl">
                     <div class="img-container">
-                        <img src="620f8b74-4873-4a8e-8193-5c2febea385c.png" alt="Хончи жажан" onerror="this.src='https://via.placeholder.com/400x300?text=Honchi+Jajang'">
+                        <img loading="lazy" src="images/12-honchi-jajang.jpg" alt="Хончи жажан">
                     </div>
                     <div class="p-6">
                         <div class="flex justify-between items-center mb-2">
                             <h3 class="text-xl font-bold">12. Хончи жажан</h3>
-                            <span class="text-red-600 font-bold text-lg">41,000₮</span>
+                            <span class="text-red-600 font-bold text-lg">43,000₮</span>
                         </div>
                         <p class="text-gray-600 text-sm italic">Honey Garlick Chicken ба Жантай гоймон 2 хүн</p>
                     </div>
@@ -324,12 +334,12 @@
                 <!-- 13. Бүр жажан -->
                 <div class="menu-card bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl">
                     <div class="img-container">
-                        <img src="Gemini_Generated_Image_fgd6hufgd6hufgd6.png" alt="Бүр жажан" onerror="this.src='https://via.placeholder.com/400x300?text=Bur+Jajang'">
+                        <img loading="lazy" src="images/13-bur-jajang.jpg" alt="Бүр жажан">
                     </div>
                     <div class="p-6">
                         <div class="flex justify-between items-center mb-2">
                             <h3 class="text-xl font-bold">13. Бүр жажан</h3>
-                            <span class="text-red-600 font-bold text-lg">39,000₮</span>
+                            <span class="text-red-600 font-bold text-lg">41,000₮</span>
                         </div>
                         <p class="text-gray-600 text-sm italic">Бүрж шарсан тахиа ба Жантай гоймон</p>
                     </div>
@@ -338,12 +348,12 @@
                 <!-- 14. Танжажан -->
                 <div class="menu-card bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl">
                     <div class="img-container">
-                        <img src="Gemini_Generated_Image_vspodzvspodzvspo.png" alt="Танжажан" onerror="this.src='https://via.placeholder.com/400x300?text=Tanjajang'">
+                        <img loading="lazy" src="images/14-tanjajang.jpg" alt="Танжажан">
                     </div>
                     <div class="p-6">
                         <div class="flex justify-between items-center mb-2">
                             <h3 class="text-xl font-bold">14. Танжажан</h3>
-                            <span class="text-red-600 font-bold text-lg">57,000₮</span>
+                            <span class="text-red-600 font-bold text-lg">59,000₮</span>
                         </div>
                         <p class="text-gray-600 text-sm italic">Тансүюг, жантай гоймон 2ш.</p>
                     </div>
@@ -364,7 +374,7 @@
                 <div class="md:w-1/2 flex justify-center">
                     <div class="bg-white p-6 rounded-3xl shadow-2xl transform rotate-3 hover:rotate-0 transition duration-500">
                          <div class="w-64 h-64 bg-white flex items-center justify-center">
-                             <img src="https://lh3.googleusercontent.com/d/1MyRk5a3TFbi92R8oT9XMRuPnZfnd-o1d" alt="" class="w-full h-full object-contain" onerror="this.src='https://via.placeholder.com/200?text=QR+Code'">
+                             <img loading="lazy" src="images/qr-facebook.png" alt="JanJa Myon Facebook QR" class="w-full h-full object-contain">
                          </div>
                          <p class="text-gray-800 text-center font-bold mt-4 text-lg">Scan & Order Now</p>
                     </div>
