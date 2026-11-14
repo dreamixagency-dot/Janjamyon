@@ -21,17 +21,17 @@
 
         /* Hero section-ий арын зураг */
         .hero-gradient {
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('hero-banner.jpg');
+            background: linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.2) 40%, rgba(45,0,0,0.93) 68%, rgba(45,0,0,0.97) 100%), url('hero-banner.jpg');
             background-size: cover;
             /* Утсан дээр: зургийн баруун тал (баруун талын дүр) харагдана */
             background-position: 85% center;
-            min-height: 100vh;
+            min-height: 100vh; min-height: 100svh;
         }
 
         /* Компьютер дээр: зураг бүтнээрээ харагдана */
         @media (min-width: 768px) {
             .hero-gradient {
-                background-position: center;
+                background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('hero-banner.jpg'); background-size: cover; background-position: center;
                 min-height: max(calc(100vw * 1054 / 2400), 560px);
             }
         }
@@ -89,14 +89,14 @@
     </nav>
 
     <!-- Hero Section -->
-    <header class="hero-gradient flex items-center justify-center text-center text-white pt-16">
+    <header class="hero-gradient flex items-end md:items-center justify-center text-center text-white pt-16 pb-24 md:pb-0">
         <div class="px-4">
-            <h2 class="text-yellow-400 font-bold tracking-widest uppercase mb-2">K-Drama дээрх яг л тэр амт!</h2>
-            <h1 class="text-6xl md:text-8xl font-bold mb-6 italic">ЖАНТАЙ ГОЙМОН</h1>
-            <p class="text-lg md:text-2xl mb-10 max-w-3xl mx-auto font-medium">Солонгос үндэсний амтат жантай гоймон болон халуун ногоотой шөлтэй гоймонгуудыг манайхаас ирж амтлаарай.</p>
-            <div class="flex flex-col md:flex-row gap-4 justify-center">
-                <a href="#menu" class="bg-yellow-500 text-black px-10 py-5 rounded-xl font-bold text-xl hover:bg-yellow-400 transition shadow-2xl">Цэс үзэх</a>
-                <a href="https://www.facebook.com/profile.php?id=61577466385393" target="_blank" class="bg-blue-600 text-white px-10 py-5 rounded-xl font-bold text-xl hover:bg-blue-500 transition flex items-center justify-center gap-2 shadow-2xl">
+            <h2 class="text-yellow-400 text-sm md:text-base font-bold tracking-widest uppercase mb-2">K-Drama дээрх яг л тэр амт!</h2>
+            <h1 class="text-3xl sm:text-4xl md:text-8xl font-bold mb-3 md:mb-6 italic whitespace-nowrap">ЖАНТАЙ ГОЙМОН</h1>
+            <p class="text-base md:text-2xl mb-6 md:mb-10 max-w-3xl mx-auto font-medium">Солонгос үндэсний амтат жантай гоймон болон халуун ногоотой шөлтэй гоймонгуудыг манайхаас ирж амтлаарай.</p>
+            <div class="flex flex-row gap-3 md:gap-4 justify-center">
+                <a href="#menu" class="bg-yellow-500 text-black px-5 py-3 md:px-10 md:py-5 rounded-xl font-bold text-base md:text-xl hover:bg-yellow-400 transition shadow-2xl">Цэс үзэх</a>
+                <a href="https://www.facebook.com/profile.php?id=61577466385393" target="_blank" class="bg-blue-600 text-white px-5 py-3 md:px-10 md:py-5 rounded-xl font-bold text-base md:text-xl hover:bg-blue-500 transition flex items-center justify-center gap-2 shadow-2xl">
                     <i class="fab fa-facebook"></i> Facebook
                 </a>
             </div>
